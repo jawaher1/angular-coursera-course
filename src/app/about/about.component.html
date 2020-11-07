@@ -57,10 +57,10 @@
   <div fxFlex>
     <h2>Corporate Leadership</h2>
   </div>
-    <div fxFlex>
+    <div fxFlex *ngIf="leaders" [@expand]>
         <mat-grid-list cols="1" rowHeight="200px">
           <mat-grid-tile *ngFor="let leader of leaders">
-            <img class="rounded" height="100px" src={{leader.image}} alt={{leader.name}}>
+            <img class="rounded" height="100px" src="{{BaseURL + leader.image}}" alt={{leader.name}}>
             <div style="margin-left: 10px;">
               <h4>{{leader.name}}</h4>
               <p>{{leader.designation}}</p>
@@ -68,6 +68,9 @@
             </div>
           </mat-grid-tile>
         </mat-grid-list>
+      </div>
+      <div [hidden]="leaders">
+        <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
       </div>
       
   

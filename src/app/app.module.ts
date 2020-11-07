@@ -15,6 +15,8 @@ import 'hammerjs';
 
 import { DishService } from './services/dish.service';
 import { LeaderService } from './services/leader.service';
+import { FeedbackService } from './services/feedback.service';
+
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -23,7 +25,30 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { MenuComponent } from './menu/menu.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
+import { LoginComponent } from './login/login.component';
+//dialog
+import { MatDialogModule } from '@angular/material/dialog';
 
+//forms
+
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
+
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms'; 
+
+//reactive forms
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatSliderModule} from '@angular/material/slider';
+import { ReactiveFormsModule } from '@angular/forms';
+//spinner
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+//http
+import { HttpClientModule } from '@angular/common/http';
+import { baseURL } from './shared/baseurl';
+
+import{ProcessHTTPMsgService} from './services/process-httpmsg.service';
+import { HighlightDirective } from './directives/highlight.directive'
 
 
 @NgModule({
@@ -35,7 +60,10 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
     FooterComponent,
     AboutComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent,
+    HighlightDirective,
+   
   ],
   imports: [
     BrowserModule,
@@ -46,9 +74,23 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule, 
+    MatInputModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    HttpClientModule ,
+    MatSliderModule
   ],
-  providers: [DishService,LeaderService],
+  entryComponents: [
+    LoginComponent
+],
+  providers: [DishService,LeaderService, {provide: 'BaseURL', useValue: baseURL}, ProcessHTTPMsgService, FeedbackService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import {Comment} from './Comment';
-export class Dish {
+export class  Dish {
     id: string;
     name: string;
     image: string;
